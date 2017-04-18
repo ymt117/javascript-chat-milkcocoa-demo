@@ -11,9 +11,10 @@ BAAS.cocoa = {
 			this.$textArea = $('#jsi-msg');
 			this.$board = $('#jsi-board');
 			this.$button = $('#jsi-button');
+			this.$msgDom = $('<li>');
 
 			//各自登録時に出たコードに書き換え。「chatRoom」は任意でok。複数の部屋を作りたい場合はここを動的にする。
-			this.chatDataStore = new MilkCocoa('各自').dataStore('chatRoom');
+			this.chatDataStore = new MilkCocoa('eggivck94jn.mlkcca.com').dataStore('chatRoom');
 		},
 
 		bindEvent:function(){
@@ -23,7 +24,7 @@ BAAS.cocoa = {
 			});
 
 			//pushを監視
-			this.chatDataStore.on("push",function(data){
+			this.chatDataStore.on('push',function(data){
 					self.addText(data.value.user);
 					self.addText(data.value.message);
 			});
@@ -31,21 +32,21 @@ BAAS.cocoa = {
 
 		//ユーザー、メッセージ送信
 		sendMsg:function(){
-				if (this.$textArea.val() == ""){ return }
+				if (this.$textArea.val() == ''){ return }
 
 				var self = this;
 				var name = this.$name.val();
 				var text = this.$textArea.val();
 				self.chatDataStore.push({user:name, message:text},function(data){
-						self.$textArea.val("");
+						self.$textArea.val('');
 				});
 		},
 
 		//受け取り後の処理
 		addText:function(json){
-				var msgDom = document.createElement("li");
-				msgDom.innerHTML = json;
-				this.$board.append(msgDom);
+				var msgDom = $('<li>');
+				msgDom.html(json);
+				this.$board.append(msgDom[0]);
 		}
 }
 
