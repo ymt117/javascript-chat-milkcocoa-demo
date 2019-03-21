@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+
+ <head>
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="chat.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCTssCLTYsk4EwxEP7yBFlJ1fTIQ984Lfk",
+    authDomain: "min-chat-4323c.firebaseapp.com",
+    databaseURL: "https://min-chat-4323c.firebaseio.com",
+    projectId: "min-chat-4323c",
+    storageBucket: "min-chat-4323c.appspot.com",
+    messagingSenderId: "1053060177971"
+  };
+  firebase.initializeApp(config);
+</script>
+
+  <style>
+    ul > li:first-child {
+     color: black;
+     font-size: 25px;
+    }
+    ul > li:nth-child(2n) {
+     color: blue;
+    }
+    ul > li:nth-child(2n):before {
+     content:"ユーザー名："
+    }
+  </style>
+ </head>
+
+ <body>
+
+  <div>
+   <!-- 投稿者 -->
+   <div>
+    <p>ユーザ名</p>
+    <textarea name="" id="jsi-name" cols="10" rows="1"></textarea>
+   </div>
+
+   <!-- メッセージを打ち込む部分 -->
+   <div>
+    <p>内容</p>
+    <textarea name="" id="jsi-msg" cols="30" rows="4"></textarea>
+   </div>
+  </div>
+
+  <!-- メッセージを送る部分 -->
+  <button name="button" id="jsi-button">send message!</button>
+
+  <!-- チャット内容が動的に生成される部分 -->
+  <ul id="jsi-board" style="list-style:none;">
+    <li>〜チャット内容〜</li>
+  </ul>
+ </body>
+</html>
